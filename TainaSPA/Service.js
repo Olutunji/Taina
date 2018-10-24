@@ -17,26 +17,26 @@ myService.factory("MSApi", function ($http) {
     };
 
     MSApi.deletePerson = function (personId) {
-        return $http.get(baseUrl + "/person/" + personId);
+        return $http.delete(baseUrl + "/person/" + personId);
     };
 
     MSApi.addPerson = function (personDtl) {
         return $http.post(baseUrl + "/person/", personDtl);
     };
 
-    MSApi.editPerson = function (personDtl) {
-        var request = ({
-            method: "put",
-            url: baseUrl + "/person/" + personDtl.PersonId,
-            data: personDtl
-        });
-
-        return request;
-    };
-
     //MSApi.editPerson = function (personDtl) {
-    //    return $http.put(baseUrl + "/person/", personDtl);
+    //    var request = ({
+    //        method: "put",
+    //        url: baseUrl + "/person/" + personDtl.PersonId,
+    //        data: personDtl
+    //    });
+
+    //    return request;
     //};
+
+    MSApi.editPerson = function (personDtl) {
+        return $http.put(baseUrl + "/person/" + personDtl.PersonId, personDtl);
+    };
 
     return MSApi;
 

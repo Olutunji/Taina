@@ -75,6 +75,9 @@ namespace TainaAPI.Data_Access
                 logWriter.LogInformation(ex.Message);
             }
 
+            if (person == null)
+                logWriter.LogInformation($"No person with ID {personId}");
+
             return person;
         }
 
