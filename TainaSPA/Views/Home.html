@@ -1,0 +1,38 @@
+﻿<div class="row">
+
+    <h1 class="text-center text-danger"> People </h1>
+    <hr />
+
+    <div class="row">
+        <div class="col-md-9 col-md-offset-1">
+            <input type="text" placeholder="Type to filter here" class="input-group-lg form-control" ng-model="txtFilter" />
+            <br />
+            <br />
+
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Person Id</th>
+                        <th>Name</th>
+                        <th>Gender</th>
+                        <th>Email Address</th>
+                        <th>Phone Number</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tr ng-repeat="person in people | filter:txtFilter">
+                    <td>{{person.PersonId}}</td>
+                    <td>{{person.FirstName}} {{person.SurName}}</td>
+                    <td>{{person.Gender}}</td>
+                    <td>{{person.Email}}</td>
+                    <td>{{person.PhoneNumber}}</td>
+                    <td><a href="#!Edit/{{person.PersonId}}">Edit Person</a></td>
+                    <td><a href="#!Delete/{{person.PersonId}}">Delete Person</a></td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+
+</div>

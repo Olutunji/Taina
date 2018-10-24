@@ -1,0 +1,10 @@
+11:21 PM : Database connection Error
+11:21 PM : Instance failure.
+11:22 PM : Database connection Error
+11:22 PM : Instance failure.
+11:23 PM : Database connection Error
+11:23 PM : Instance failure.
+11:23 PM : Database connection Error
+11:23 PM : Instance failure.
+11:23 PM : Database connection Error
+11:23 PM : Instance failure.

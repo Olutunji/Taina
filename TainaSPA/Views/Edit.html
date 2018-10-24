@@ -1,0 +1,47 @@
+﻿<div class="jumbotron">
+    <h2>{{message}}</h2>
+    <h2>{{Id}}</h2>
+    <h2>{{person.FirstName}}</h2>
+</div>
+
+<h1 class="text-center text-danger"> Edit Person </h1>
+<hr />
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <form>
+            <div class="form-group">
+                <label for="inputEmail">First Name *</label>
+                <input type="text" ng-model="person.FirstName" ng-maxlength="30" class="form-control" placeholder="Please Enter FirstName" required />
+            </div>
+            <div class="form-group">
+                <label for="inputEmail">Last Name *</label>
+                <input type="text" ng-model="person.Surname" ng-maxlength="40" class="form-control" placeholder="Please Enter Last Name" required />
+            </div>
+            <div class="form-group">
+                <label for="inputEmail">Please Select Gender *</label>
+                <select ng-model="person.Gender" ng-options="x for (x, y) in GenderOption" required></select>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail">Email *</label>
+                <input type="email" ng-model="person.Email" ng-maxlength="200" class="form-control" placeholder="Please Enter Email" required />
+                <span ng-show="myForm.myAddress.$error.email">Not a valid e-mail address</span>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail">Phone Number</label>
+                <input type="text" ng-model="person.PhoneNumber" ng-maxlength="30" class="form-control" placeholder="Please Enter PhoneNumber" />
+            </div>
+
+            <button ng-click="editPerson()" class="btn btn-info form-control input-lg">Edit Person</button>
+        </form>
+
+        <div class="row">
+            <div class="col-md-12">
+                <p class="text-muted">
+                    These fields <strong>*</strong> are required.
+                </p>
+            </div>
+        </div>
+
+    </div>
+</div>
