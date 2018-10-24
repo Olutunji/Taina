@@ -26,7 +26,6 @@ myApp.config(['$routeProvider', function ($routeProvider) {
             })
     }]);
 
-
 myApp.controller('AddController', function ($scope, MSApi) {
     //$scope.message = "In Add view";
 
@@ -34,8 +33,7 @@ myApp.controller('AddController', function ($scope, MSApi) {
     $scope.addPerson =
         function addPerson() {
 
-            if ($scope.FirstName == undefined || $scope.Surname == undefined || $scope.Gender == undefined
-                || $scope.Email == undefined || $scope.PhoneNumber == undefined) {
+            if ($scope.FirstName == undefined || $scope.Surname == undefined || $scope.Gender == undefined || $scope.Email == undefined) {
                 alert("Please fill all mandatory field");
             }
             else {
@@ -54,13 +52,15 @@ myApp.controller('AddController', function ($scope, MSApi) {
                     $scope.email = undefined;
                     $scope.PhoneNumber = undefined;
                 }, function myError(response) {
-                    alert("Opps!, Action could not be completed. Please enter person details again <br />" + response.message);
+                    alert("Opps!, Action could not be completed. Please enter person details again");
                 })
+
+                $location.path('#!Home');
             }
         };
 });
 
-myApp.controller('EditController', ['$scope', '$routeParams', 'MSApi', function ($scope, $routeParams, MSApi) {
+myApp.controller('EditController', ['$scope', '$routeParams', 'MSApi', '$location', function ($scope, $routeParams, MSApi, $location) {
     //$scope.message = "In Edit view";
     $scope.GenderOption = ["Male", "Female"];
     $scope.Id = $routeParams.Id;
@@ -76,7 +76,7 @@ myApp.controller('EditController', ['$scope', '$routeParams', 'MSApi', function 
         MSApi.getPerson(Id).then(function mySuccess(response) {
             $scope.person = response.data;
         }, function myError(response) {
-            alert("Opps!, Action could not be completed.Please, wait few minutes and try again < br /> " + response.message);
+            alert("Opps!, Action could not be completed.Please, wait few minutes and try again");
         })
     }
 
@@ -84,8 +84,7 @@ myApp.controller('EditController', ['$scope', '$routeParams', 'MSApi', function 
         function editPerson() {
 
             $scope.person;
-            if ($scope.person.FirstName == undefined || $scope.person.SurName == undefined || $scope.person.Gender == undefined
-                || $scope.person.Email == undefined || $scope.person.PhoneNumber == undefined) {
+            if ($scope.person.FirstName == undefined || $scope.person.SurName == undefined || $scope.person.Gender == undefined || $scope.person.Email == undefined) {
                 alert("Please fill all mandatory field");
             }
             else {
@@ -104,10 +103,11 @@ myApp.controller('EditController', ['$scope', '$routeParams', 'MSApi', function 
                     $scope.Gender = undefined;
                     $scope.email = undefined;
                     $scope.PhoneNumber = undefined;
-                    $location.path('Home');
                 }, function myError(response) {
-                    alert("Opps!, Action could not be completed. Please amend person details again <br />" + response.message);
-                })
+                    alert("Opps!, Action could not be completed. Please amend person details again");
+                    })
+
+                $location.path('#!Home');
             }
         };
 
@@ -142,8 +142,10 @@ myApp.controller('DeleteController', ['$scope', '$routeParams', 'MSApi', '$locat
             $scope.person.Email = undefined;
             $scope.person.PhoneNumber = undefined;
         }, function myError(response) {
-            alert("Opps!, Action could not be completed.Please, wait few minutes and try again < br /> " + response.message);
+            alert("Opps!, Action could not be completed.Please, wait few minutes and try again");
         })
+
+        $location.path('#!Home');
     }
 }]);
 

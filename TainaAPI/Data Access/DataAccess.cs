@@ -45,6 +45,7 @@ namespace TainaAPI.Data_Access
             {
                 logWriter.LogInformation("Database connection Error");
                 logWriter.LogInformation(ex.Message);
+                logWriter.LogInformation(ex.StackTrace);
             }
 
             return people;
@@ -73,9 +74,10 @@ namespace TainaAPI.Data_Access
             {
                 logWriter.LogInformation("Database connection Error");
                 logWriter.LogInformation(ex.Message);
+                logWriter.LogInformation(ex.StackTrace);
             }
 
-            if (person == null)
+            if (person == null && personId != 0)
                 logWriter.LogInformation($"No person with ID {personId}");
 
             return person;
@@ -107,6 +109,7 @@ namespace TainaAPI.Data_Access
             {
                 logWriter.LogInformation("Database connection Error");
                 logWriter.LogInformation(ex.Message);
+                logWriter.LogInformation(ex.StackTrace);
             }
 
         }
@@ -138,6 +141,7 @@ namespace TainaAPI.Data_Access
             {
                 logWriter.LogInformation("Database connection Error");
                 logWriter.LogInformation(ex.Message);
+                logWriter.LogInformation(ex.StackTrace);
             }
         }
 
@@ -160,6 +164,7 @@ namespace TainaAPI.Data_Access
             {
                 logWriter.LogInformation("Database connection Error");
                 logWriter.LogInformation(ex.Message);
+                logWriter.LogInformation(ex.StackTrace);
             }
         }
 

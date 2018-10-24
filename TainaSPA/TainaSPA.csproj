@@ -73,7 +73,9 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Controllers\AddController.js" />
+    <Content Include="Controllers\DeleteController.js" />
     <Content Include="Controllers\EditController.js" />
+    <Content Include="Controllers\HomeController.js" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="index.html" />
     <Content Include="Scripts\angular-mocks.js" />
