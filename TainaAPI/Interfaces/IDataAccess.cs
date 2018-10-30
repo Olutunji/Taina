@@ -9,14 +9,14 @@ namespace TainaAPI.Interfaces
 {
     interface IDataAccess
     {
-        List<PersonDetail> Get();
+        List<PersonDetail> GetPeople();
 
-        PersonDetail Get(int id);
+        PersonDetail GetPerson(int id);
 
-        void Add(PersonDetail person);
+        void AddPerson(PersonDetail person);
 
-        void Update(int id, PersonDetail person);
+        void UpdatePerson(int id, PersonDetail person);
 
-        void Delete(int id);
+        void DeletePerson(int id);
     }
 }

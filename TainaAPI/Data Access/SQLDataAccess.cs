@@ -6,10 +6,11 @@ using System.Linq;
 using System.Web;
 using TainaAPI.Models;
 using System.Configuration;
+using TainaAPI.Interfaces;
 
 namespace TainaAPI.Data_Access
 {
-    public class SQLDataAccess
+    public class SQLDataAccess : IDataAccess
     {
         //private const string connectionString = "Server=OLUTUNJI\\SQLSERVERDEV2017;Database=Nigeria;Trusted_Connection=True";
         private string connectionString = ConfigurationManager.ConnectionStrings["DBName"].ConnectionString;
