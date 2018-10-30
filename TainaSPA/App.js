@@ -51,11 +51,10 @@ myApp.controller('AddController', function ($scope, MSApi) {
                     $scope.Gender = undefined;
                     $scope.email = undefined;
                     $scope.PhoneNumber = undefined;
+                    $location.path('#!Home');
                 }, function myError(response) {
                     alert("Opps!, Action could not be completed. Please enter person details again");
                 })
-
-                $location.path('#!Home');
             }
         };
 });
@@ -103,11 +102,10 @@ myApp.controller('EditController', ['$scope', '$routeParams', 'MSApi', '$locatio
                     $scope.Gender = undefined;
                     $scope.email = undefined;
                     $scope.PhoneNumber = undefined;
+                    $location.path('#!Home');
                 }, function myError(response) {
                     alert("Opps!, Action could not be completed. Please amend person details again");
-                    })
-
-                $location.path('#!Home');
+                })
             }
         };
 

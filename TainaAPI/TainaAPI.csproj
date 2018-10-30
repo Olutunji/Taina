@@ -92,11 +92,12 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\PersonController.cs" />
-    <Compile Include="Data Access\DataAccess.cs" />
+    <Compile Include="Data Access\SQLDataAccess.cs" />
     <Compile Include="Data Access\LogWriter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\IDataAccess.cs" />
     <Compile Include="Models\PersonDetail.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

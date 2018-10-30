@@ -9,14 +9,14 @@ using System.Configuration;
 
 namespace TainaAPI.Data_Access
 {
-    public class DataAccess
+    public class SQLDataAccess
     {
         //private const string connectionString = "Server=OLUTUNJI\\SQLSERVERDEV2017;Database=Nigeria;Trusted_Connection=True";
         private string connectionString = ConfigurationManager.ConnectionStrings["DBName"].ConnectionString;
         SqlConnection cnn;
         LogWriter logWriter;
 
-        public DataAccess()
+        public SQLDataAccess()
         {
             cnn = new SqlConnection(connectionString);
             logWriter = new LogWriter();

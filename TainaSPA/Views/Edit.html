@@ -24,19 +24,23 @@
             </div>
             <div class="form-group">
                 <label>Please Select Gender *</label>
-                <select ng-model="person.Gender" ng-options="x for x in GenderOption" required></select>
+                <select ng-model="person.Gender" name="genList" ng-options="x for x in GenderOption" required></select>
+                <span ng-show="myForm.genList.invalid">Please, select person Gender</span>
             </div>
             <div class="form-group">
                 <label>Email *</label>
-                <input type="email" ng-model="person.Email" ng-maxlength="200" class="form-control" placeholder="Please Enter Email" required />
-                <span ng-show="myForm.myEmail.$error.email">Not a valid e-mail address</span>
+                <input type="email" name="myEmail" ng-model="person.Email" ng-maxlength="200" class="form-control" placeholder="Please Enter Email" required />
+                <span ng-show="myForm.myEmail.$error.email">Please, enter valid e-mail address</span>
+                <span ng-show="myForm.myEmail.$error.maxlength">Phone Number too Long, 200 characters only</span>
             </div>
             <div class="form-group">
                 <label>Phone Number</label>
-                <input type="number" ng-model="person.PhoneNumber" ng-maxlength="30" class="form-control" placeholder="Please Enter PhoneNumber" />
+                <input type="text" name="phNumber" ng-model="person.PhoneNumber" ng-maxlength="30" class="form-control" placeholder="Please Enter PhoneNumber" />
+                <span ng-show="myForm.phNumber.$error.number">Please, enter valid phone number</span>
+                <span ng-show="myForm.phNumber.$error.maxlength">Surname too long, 30 Character only</span>
             </div>
 
-            <button ng-click="editPerson()" class="btn btn-info form-control input-lg">Edit Person</button>
+            <button ng-disabled="myForm.$invalid" ng-click="editPerson()" class="btn btn-info form-control input-lg">Edit Person</button>
         </form>
 
         <div class="row">

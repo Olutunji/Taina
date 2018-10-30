@@ -11,12 +11,12 @@ namespace TainaAPI.Controllers
 {
     public class PersonController : ApiController
     {
-        private DataAccess dataAccess;
+        private SQLDataAccess dataAccess;
 
         // GET: api/Person
         public List<PersonDetail> Get()
         {
-            dataAccess = new DataAccess();
+            dataAccess = new SQLDataAccess();
             List<PersonDetail> people = dataAccess.GetPeople();
 
             return people;
@@ -25,7 +25,7 @@ namespace TainaAPI.Controllers
         // GET: api/Person/5
         public PersonDetail Get(int id)
         {
-            dataAccess = new DataAccess();
+            dataAccess = new SQLDataAccess();
             PersonDetail person = dataAccess.GetPerson(id);
 
             return person;
@@ -34,21 +34,21 @@ namespace TainaAPI.Controllers
         // POST: api/Person
         public void Post(PersonDetail person)
         {
-            dataAccess = new DataAccess();
+            dataAccess = new SQLDataAccess();
             dataAccess.AddPerson(person);
         }
 
         // PUT: api/Person/5
         public void Put(int id, PersonDetail person)
         {
-            dataAccess = new DataAccess();
+            dataAccess = new SQLDataAccess();
             dataAccess.UpdatePerson(id, person);
         }
 
         // DELETE: api/Person/5
         public void Delete(int id)
         {
-            dataAccess = new DataAccess();
+            dataAccess = new SQLDataAccess();
             dataAccess.DeletePerson(id);
         }
     }
