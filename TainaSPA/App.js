@@ -97,11 +97,11 @@ myApp.controller('EditController', ['$scope', '$routeParams', 'MSApi', '$locatio
                 };
                 MSApi.editPerson(newPerson).then(function mySuccess(response) {
                     alert("Thanks, Person Edited");
-                    $scope.FirstName = undefined;
-                    $scope.SurName = undefined;
-                    $scope.Gender = undefined;
-                    $scope.Email = undefined;
-                    $scope.PhoneNumber = undefined;
+                    $scope.person.FirstName = undefined;
+                    $scope.person.SurName = undefined;
+                    $scope.person.Gender = undefined;
+                    $scope.person.Email = undefined;
+                    $scope.person.PhoneNumber = undefined;
                     //$location.path('#!Home');
                 }, function myError(response) {
                     alert("Opps!, Action could not be completed. Please amend person details again");
