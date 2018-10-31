@@ -7,7 +7,7 @@ using TainaAPI.Models;
 
 namespace TainaAPI.Interfaces
 {
-    interface IDataAccess
+    public interface IDataAccess
     {
         List<PersonDetail> GetPeople();
 

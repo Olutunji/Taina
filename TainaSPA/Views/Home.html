@@ -20,7 +20,7 @@
                         <th></th>
                     </tr>
                 </thead>
-                <tr ng-repeat="person in people | filter:txtFilter">
+                <tr ng-repeat="person in people | filter:txtFilter | orderBy:'FirstName':flase">
                     <td>{{person.FirstName}} {{person.SurName}}</td>
                     <td>{{person.Gender}}</td>
                     <td>{{person.Email}}</td>

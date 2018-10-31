@@ -92,13 +92,9 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\PersonController.cs" />
-    <Compile Include="Data Access\SQLDataAccess.cs" />
-    <Compile Include="Data Access\LogWriter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\IDataAccess.cs" />
-    <Compile Include="Models\PersonDetail.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -112,6 +108,16 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TainaBO\TainaBO.csproj">
+      <Project>{863260bc-cc2f-4b05-a59d-4f7ef035ba4d}</Project>
+      <Name>TainaBO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TainaDO\TainaDO.csproj">
+      <Project>{85935897-8b9b-44d0-9c3b-2a01823411d2}</Project>
+      <Name>TainaDO</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
