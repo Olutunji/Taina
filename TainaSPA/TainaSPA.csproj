@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.js" />
+    <Content Include="CacheService.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />

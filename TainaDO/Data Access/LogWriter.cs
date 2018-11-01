@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.IO;
+using System.Diagnostics;
 
 namespace TainaAPI.Data_Access
 {
@@ -23,7 +24,12 @@ namespace TainaAPI.Data_Access
             catch (Exception ex)
             {
                 String message = ex.Message;
-                // Not sure yet
+                // Write to the OS event Log
+                using (EventLog eventLog = new EventLog("Application"))
+                {
+                    eventLog.Source = "Application";
+                    eventLog.WriteEntry(ex.Message, EventLogEntryType.Error, 101, 1);
+                }
             }
 
         }

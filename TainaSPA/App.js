@@ -1,7 +1,7 @@
 ﻿/// <reference path="scripts/angular.js" />
 
 
-var myApp = angular.module("myApp", ['ngRoute','MyService']);
+var myApp = angular.module("myApp", ['ngRoute', 'MyService', 'MyCache']);
 
 myApp.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.
@@ -59,7 +59,7 @@ myApp.controller('AddController', function ($scope, MSApi) {
         };
 });
 
-myApp.controller('EditController', ['$scope', '$routeParams', 'MSApi', '$location', function ($scope, $routeParams, MSApi, $location) {
+myApp.controller('EditController', ['$scope', '$routeParams', 'MSApi', '$location', 'MCache', function ($scope, $routeParams, MSApi, $location, MCache) {
     //$scope.message = "In Edit view";
     $scope.GenderOption = ["Male", "Female"];
     $scope.Id = $routeParams.Id;
@@ -67,9 +67,15 @@ myApp.controller('EditController', ['$scope', '$routeParams', 'MSApi', '$locatio
     $scope.hidden = false;
     if ($routeParams.Id == 0)
         $scope.hidden = true;
-        
 
-    getPerson($routeParams.Id);
+    var selectedPerson = MCache.get($routeParams.Id)
+
+    if (selectedPerson) {
+        $scope.person = selectedPerson;
+    }
+    else {
+        getPerson($routeParams.Id);
+    }
     function getPerson(Id) {
 
         MSApi.getPerson(Id).then(function mySuccess(response) {
@@ -111,7 +117,7 @@ myApp.controller('EditController', ['$scope', '$routeParams', 'MSApi', '$locatio
 
 }]);
 
-myApp.controller('DeleteController', ['$scope', '$routeParams', 'MSApi', '$location', function ($scope, $routeParams, MSApi, $location) {
+myApp.controller('DeleteController', ['$scope', '$routeParams', 'MSApi', '$location', 'MCache', function ($scope, $routeParams, MSApi, $location, MCache) {
     //$scope.message = "In Delete view";
     $scope.Id = $routeParams.Id;
 
@@ -119,7 +125,14 @@ myApp.controller('DeleteController', ['$scope', '$routeParams', 'MSApi', '$locat
     if ($routeParams.Id == 0)
         $scope.hidden = true;
 
-    getPerson($routeParams.Id);
+    var selectedPerson = MCache.get($routeParams.Id)
+
+    if (selectedPerson) {
+        $scope.person = selectedPerson;
+    }
+    else {
+        getPerson($routeParams.Id);
+    }
     function getPerson(Id) {
 
         MSApi.getPerson(Id).then(function mySuccess(response) {
@@ -134,6 +147,7 @@ myApp.controller('DeleteController', ['$scope', '$routeParams', 'MSApi', '$locat
 
         MSApi.deletePerson($scope.person.PersonId).then(function mySuccess(response) {
             alert("Thanks, Person Deleted");
+            MCache.remove($scope.person.PersonId);
             $scope.person.FirstName = undefined;
             $scope.person.SurName = undefined;
             $scope.person.Gender = undefined;
@@ -147,17 +161,28 @@ myApp.controller('DeleteController', ['$scope', '$routeParams', 'MSApi', '$locat
     }
 }]);
 
-myApp.controller('HomeController', function ($scope, MSApi) {
+myApp.controller('HomeController', ['$scope', 'MSApi', 'MCache', function ($scope, MSApi, MCache) {
     $scope.message = "In Home view";
+
+    //$scope.addToCache = function (key, value) {
+    //    MCache.put(key, value)
+    //};
 
     getPeople();
     function getPeople() {
 
         MSApi.getPeople().then(function mySuccess(response) {
             $scope.people = response.data;
+            loadCache(response.data);
         }, function myError(response) {
             $scope.fName = response.statusText;
         })
     }
 
-});
+    function loadCache(people) {
+        angular.forEach(people, function (person) {
+            MCache.put(person.PersonId, person);
+        })
+    }
+
+}]);

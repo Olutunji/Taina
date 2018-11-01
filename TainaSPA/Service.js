@@ -9,7 +9,7 @@ myService.factory("MSApi", function ($http) {
     var MSApi = {};
 
     MSApi.getPeople = function () {
-        return $http.get(baseUrl + "/person");
+        return $http.get(baseUrl + "/person", {cache : false});
     };
 
     MSApi.getPerson = function (personId) {
@@ -23,16 +23,6 @@ myService.factory("MSApi", function ($http) {
     MSApi.addPerson = function (personDtl) {
         return $http.post(baseUrl + "/person/", personDtl);
     };
-
-    //MSApi.editPerson = function (personDtl) {
-    //    var request = ({
-    //        method: "put",
-    //        url: baseUrl + "/person/" + personDtl.PersonId,
-    //        data: personDtl
-    //    });
-
-    //    return request;
-    //};
 
     MSApi.editPerson = function (personDtl) {
         return $http.put(baseUrl + "/person/" + personDtl.PersonId, personDtl);
